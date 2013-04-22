@@ -1,0 +1,46 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "lib.bwa.bigWebDesk.bll", "BLL\lib.bwa.bigWebDesk.bll.csproj", "{F9957293-9305-4500-9888-E40E85618FF3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "lib.bwa.bigWebDesk.LinqBll", "BLL Linq\lib.bwa.bigWebDesk.LinqBll.csproj", "{D267F4DC-F1B6-40F1-BD5D-96CEA72FD123}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "lib.bwa.bigWebDesk.dal", "DAL\lib.bwa.bigWebDesk.dal.csproj", "{45543C60-3931-4EAF-9CFD-2420F5709EC0}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		bigWebDesk Debug|Any CPU = bigWebDesk Debug|Any CPU
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+		SignUp Debug|Any CPU = SignUp Debug|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F9957293-9305-4500-9888-E40E85618FF3}.bigWebDesk Debug|Any CPU.ActiveCfg = bigWebDesk Debug|Any CPU
+		{F9957293-9305-4500-9888-E40E85618FF3}.bigWebDesk Debug|Any CPU.Build.0 = bigWebDesk Debug|Any CPU
+		{F9957293-9305-4500-9888-E40E85618FF3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F9957293-9305-4500-9888-E40E85618FF3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F9957293-9305-4500-9888-E40E85618FF3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F9957293-9305-4500-9888-E40E85618FF3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F9957293-9305-4500-9888-E40E85618FF3}.SignUp Debug|Any CPU.ActiveCfg = SignUp Debug|Any CPU
+		{F9957293-9305-4500-9888-E40E85618FF3}.SignUp Debug|Any CPU.Build.0 = SignUp Debug|Any CPU
+		{D267F4DC-F1B6-40F1-BD5D-96CEA72FD123}.bigWebDesk Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D267F4DC-F1B6-40F1-BD5D-96CEA72FD123}.bigWebDesk Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D267F4DC-F1B6-40F1-BD5D-96CEA72FD123}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D267F4DC-F1B6-40F1-BD5D-96CEA72FD123}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D267F4DC-F1B6-40F1-BD5D-96CEA72FD123}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D267F4DC-F1B6-40F1-BD5D-96CEA72FD123}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D267F4DC-F1B6-40F1-BD5D-96CEA72FD123}.SignUp Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D267F4DC-F1B6-40F1-BD5D-96CEA72FD123}.SignUp Debug|Any CPU.Build.0 = Debug|Any CPU
+		{45543C60-3931-4EAF-9CFD-2420F5709EC0}.bigWebDesk Debug|Any CPU.ActiveCfg = bigWebDesk Debug|Any CPU
+		{45543C60-3931-4EAF-9CFD-2420F5709EC0}.bigWebDesk Debug|Any CPU.Build.0 = bigWebDesk Debug|Any CPU
+		{45543C60-3931-4EAF-9CFD-2420F5709EC0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{45543C60-3931-4EAF-9CFD-2420F5709EC0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{45543C60-3931-4EAF-9CFD-2420F5709EC0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{45543C60-3931-4EAF-9CFD-2420F5709EC0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{45543C60-3931-4EAF-9CFD-2420F5709EC0}.SignUp Debug|Any CPU.ActiveCfg = SignUp Debug|Any CPU
+		{45543C60-3931-4EAF-9CFD-2420F5709EC0}.SignUp Debug|Any CPU.Build.0 = SignUp Debug|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

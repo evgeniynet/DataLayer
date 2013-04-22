@@ -1,0 +1,242 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <OutputPath>bin\Debug\</OutputPath>
+    <BaseIntermediateOutputPath>obj\</BaseIntermediateOutputPath>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{F9957293-9305-4500-9888-E40E85618FF3}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>lib.bwa.bigWebDesk.bll</RootNamespace>
+    <AssemblyName>lib.bwa.bigWebDesk.bll</AssemblyName>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile />
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'SignUp Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\SignUp Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
+    <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.cs</CodeAnalysisModuleSuppressionsFile>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'bigWebDesk Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\bigWebDesk Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
+    <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.cs</CodeAnalysisModuleSuppressionsFile>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Micajah.Common3, Version=3.0.4800.29086, Culture=neutral, PublicKeyToken=045979187a9f4eec, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\bin Shared\Micajah.Common3.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Common">
+      <HintPath>..\bin Shared\Microsoft.Practices.EnterpriseLibrary.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Data">
+      <HintPath>..\bin Shared\Microsoft.Practices.EnterpriseLibrary.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.ObjectBuilder">
+      <HintPath>..\bin Shared\Microsoft.Practices.ObjectBuilder.dll</HintPath>
+    </Reference>
+    <Reference Include="NCI.EasyObjects">
+      <HintPath>..\bin Shared\NCI.EasyObjects.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Core\Classes\AccessKey.cs" />
+    <Compile Include="Core\Classes\Accounts.cs" />
+    <Compile Include="Core\Classes\Asset.cs" />
+    <Compile Include="Core\Classes\AssetBulk.cs" />
+    <Compile Include="Core\Classes\AssetCategories.cs" />
+    <Compile Include="Core\Classes\Assets.cs" />
+    <Compile Include="Core\Classes\Classes.cs" />
+    <Compile Include="Core\Classes\Companies.cs" />
+    <Compile Include="Core\Classes\Configuration.cs" />
+    <Compile Include="Core\Classes\FreshBooks.cs" />
+    <Compile Include="Core\Classes\RptsCommon.cs" />
+    <Compile Include="Core\Classes\CreationCategories.cs" />
+    <Compile Include="Core\Classes\CustomFields.cs" />
+    <Compile Include="Core\Classes\CustomMails.cs" />
+    <Compile Include="Core\Classes\CustomTexts.cs" />
+    <Compile Include="Core\Classes\EmailDropBoxes.cs" />
+    <Compile Include="Core\Classes\Folders.cs" />
+    <Compile Include="Core\Classes\FollowUps.cs" />
+    <Compile Include="Core\Classes\GlobalFilters.cs" />
+    <Compile Include="Core\Classes\Invoice.cs" />
+    <Compile Include="Core\Classes\JunkMail.cs" />
+    <Compile Include="Core\Classes\KnowledgeBase.cs" />
+    <Compile Include="Core\Classes\Levels.cs" />
+    <Compile Include="Core\Classes\Locations.cs" />
+    <Compile Include="Core\Classes\MailGroups.cs" />
+    <Compile Include="Core\Classes\MailNotification.cs" />
+    <Compile Include="Core\Classes\NotificationEventsQueue.cs" />
+    <Compile Include="Core\Classes\NotificationRules.cs" />
+    <Compile Include="Core\Classes\Parts.cs" />
+    <Compile Include="Core\Classes\Priorities.cs" />
+    <Compile Include="Core\Classes\Project.cs" />
+    <Compile Include="Core\Classes\RatePlan.cs" />
+    <Compile Include="Core\Classes\RelatedTickets.cs" />
+    <Compile Include="Core\Classes\Reports.cs" />
+    <Compile Include="Core\Classes\ResolutionCategories.cs" />
+    <Compile Include="Core\Classes\RouteOrder.cs" />
+    <Compile Include="Core\Classes\ScheduledTickets.cs" />
+    <Compile Include="Core\Classes\SubmissionCategories.cs" />
+    <Compile Include="Core\Classes\SupportGroups.cs" />
+    <Compile Include="Core\Classes\SupportPortal.cs" />
+    <Compile Include="Core\Classes\TaskType.cs" />
+    <Compile Include="Core\Classes\TicketCriterias.cs" />
+    <Compile Include="Core\Classes\TicketTravelCosts.cs" />
+    <Compile Include="Core\Classes\TimeBill.cs" />
+    <Compile Include="Core\Classes\ToDo.cs" />
+    <Compile Include="Core\Classes\UnassignedQueues.cs" />
+    <Compile Include="Core\CurrentSessionUserSettings.cs" />
+    <Compile Include="Core\Classes\Vendors.cs" />
+    <Compile Include="Core\Classes\Worklist.cs" />
+    <Compile Include="Core\Classes\XMLTicketExport.cs" />
+    <Compile Include="Core\Config.cs" />
+    <Compile Include="Core\CustomNames.cs" />
+    <Compile Include="Core\DBAccess.cs" />
+    <Compile Include="Core\Functions.cs" />
+    <Compile Include="Core\Classes\Logins.cs" />
+    <Compile Include="Core\Security.cs" />
+    <Compile Include="Core\Classes\Ticket.cs" />
+    <Compile Include="Core\Classes\Tickets.cs" />
+    <Compile Include="Core\UserAuth.cs" />
+    <Compile Include="EasyObjects\Company.cs" />
+    <Compile Include="EasyObjects\CreationCats.cs" />
+    <Compile Include="EasyObjects\DeploymentLogger.cs" />
+    <Compile Include="EasyObjects\DeploymentLoggerUser.cs" />
+    <Compile Include="EasyObjects\DuplicateLoginlException.cs" />
+    <Compile Include="EasyObjects\LocationRootLevels.cs" />
+    <Compile Include="EasyObjects\Locations.cs" />
+    <Compile Include="EasyObjects\Priorities.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="EasyObjects\LoginCompanyJunc.cs" />
+    <Compile Include="EasyObjects\Logins.cs" />
+    <Compile Include="EasyObjects\Class.cs" />
+    <Compile Include="EasyObjects\ClassTechnicianJctn.cs" />
+    <Compile Include="EasyObjects\ResolutionCats.cs" />
+    <Compile Include="EasyObjects\RoutingOrder.cs" />
+    <Compile Include="EasyObjects\TktLevels.cs" />
+    <Compile Include="EasyObjects\UserType.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.2.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 2.0 %28x86%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.0 %28x86%29</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.VisualBasic.PowerPacks.10.0">
+      <Visible>False</Visible>
+      <ProductName>Microsoft Visual Basic PowerPacks 10.0</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DAL\lib.bwa.bigWebDesk.dal.csproj">
+      <Project>{45543C60-3931-4EAF-9CFD-2420F5709EC0}</Project>
+      <Name>lib.bwa.bigWebDesk.dal</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <PropertyGroup>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+</Project>
