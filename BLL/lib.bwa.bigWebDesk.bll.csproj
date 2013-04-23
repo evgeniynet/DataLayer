@@ -87,23 +87,23 @@
   <ItemGroup>
     <Reference Include="Micajah.Common3, Version=3.0.4855.33023, Culture=neutral, PublicKeyToken=045979187a9f4eec, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\bin\Micajah.Common3.dll</HintPath>
+      <HintPath>..\bin shared\Micajah.Common3.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Practices.EnterpriseLibrary.Common, Version=4.1.0.0, Culture=neutral, PublicKeyToken=e44a2bc38ed2c13c, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\bin\Microsoft.Practices.EnterpriseLibrary.Common.dll</HintPath>
+      <HintPath>..\bin shared\Microsoft.Practices.EnterpriseLibrary.Common.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Practices.EnterpriseLibrary.Data, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\bin\Microsoft.Practices.EnterpriseLibrary.Data.dll</HintPath>
+      <HintPath>..\bin shared\Microsoft.Practices.EnterpriseLibrary.Data.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Practices.ObjectBuilder, Version=1.0.51205.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\bin\Microsoft.Practices.ObjectBuilder.dll</HintPath>
+      <HintPath>..\bin shared\Microsoft.Practices.ObjectBuilder.dll</HintPath>
     </Reference>
     <Reference Include="NCI.EasyObjects, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\bin\NCI.EasyObjects.dll</HintPath>
+      <HintPath>..\bin shared\NCI.EasyObjects.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.configuration" />
