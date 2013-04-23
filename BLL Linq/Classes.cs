@@ -80,17 +80,17 @@ namespace lib.bwa.bigWebDesk.LinqBll
         static public Dictionary<string, string> GetFieldAlias()
         {
             Dictionary<string, string> a = new Dictionary<string, string>();
-            a.Add("key", "cast(l.id as varchar(MAX))");
-            a.Add("parent_class_id", "cast(l.ParentId as varchar(MAX))");
+            a.Add("key", "cast(l.id as nvarchar(MAX))");
+            a.Add("parent_class_id", "cast(l.ParentId as nvarchar(MAX))");
             a.Add("hierarchy_level", "t.Treelevel");
             a.Add("name", "Name");
             a.Add("description", "txtDesc");
             a.Add("active", "( not l.btInactive)");
-            a.Add("priority_id", "cast(l.intPriorityId as varchar(MAX))");
+            a.Add("priority_id", "cast(l.intPriorityId as nvarchar(MAX))");
             a.Add("level", "tintLevelOverride");
-            a.Add("last_resort_tech_userid", "cast(l.LastResortTechId as varchar(MAX))");
-            a.Add("class_type_id", "cast(l.tintClassType as varchar(MAX))");
-            a.Add("routing_type_id", "cast(l.ConfigDistributedRouting as varchar(MAX))");
+            a.Add("last_resort_tech_userid", "cast(l.LastResortTechId as nvarchar(MAX))");
+            a.Add("class_type_id", "cast(l.tintClassType as nvarchar(MAX))");
+            a.Add("routing_type_id", "cast(l.ConfigDistributedRouting as nvarchar(MAX))");
             return a;
         }
 

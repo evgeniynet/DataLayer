@@ -265,11 +265,11 @@ namespace bigWebApps.bigWebDesk.Data
 
         public static void SelectAccountInfo(int DeptID, int AccountID, out string AccountName, out int LocationId, out string LocationName)
         {
-            SqlParameter _pAccName = new SqlParameter("@vchAcctName", SqlDbType.VarChar, 100);
+            SqlParameter _pAccName = new SqlParameter("@vchAcctName", SqlDbType.NVarChar, 100);
             _pAccName.Direction = ParameterDirection.Output;
             SqlParameter _pLocID = new SqlParameter("@LocationId", SqlDbType.Int);
             _pLocID.Direction = ParameterDirection.Output;
-            SqlParameter _pLocName = new SqlParameter("@LocationName", SqlDbType.VarChar, 2000);
+            SqlParameter _pLocName = new SqlParameter("@LocationName", SqlDbType.NVarChar);
             _pLocName.Direction = ParameterDirection.Output;
             SqlCommand _cmd = CreateSqlCommand("sp_SelectAcctSchedTkt", new SqlParameter[] { new SqlParameter("@DId", DeptID), new SqlParameter("@AcctId", AccountID), _pAccName, _pLocID, _pLocName });
             if (_cmd.Connection.State == ConnectionState.Closed) _cmd.Connection.Open();
@@ -424,13 +424,13 @@ namespace bigWebApps.bigWebDesk.Data
             if (LevelId != 0) _pLevelId.Value = LevelId;
             else _pLevelId.Value = DBNull.Value;
             //Depreciated Parameter
-            SqlParameter _pSerialNumber = new SqlParameter("@vchAssetSerial", SqlDbType.VarChar, 50);
+            SqlParameter _pSerialNumber = new SqlParameter("@vchAssetSerial", SqlDbType.NVarChar, 50);
             _pSerialNumber.Value = DBNull.Value;
             //----
-            SqlParameter _pSubject = new SqlParameter("@vchSubject", SqlDbType.VarChar, 100);
+            SqlParameter _pSubject = new SqlParameter("@vchSubject", SqlDbType.NVarChar, 100);
             if (TktSubject.Length > 0) _pSubject.Value = TktSubject;
             else _pSubject.Value = DBNull.Value;
-            SqlParameter _pText = new SqlParameter("@vchText", SqlDbType.VarChar, 5000);
+            SqlParameter _pText = new SqlParameter("@vchText", SqlDbType.NVarChar);
             if (TktText.Length > 0)
             {
                 if (TktText.Length > 4999) TktText = "--Text truncated at 5000 characters--<br><br>" + TktText.Substring(0, 4905) + "<br><br>--Text truncated at 5000 characters--";
@@ -446,7 +446,7 @@ namespace bigWebApps.bigWebDesk.Data
             SqlParameter _pDateStop = new SqlParameter("@dtStop", SqlDbType.SmallDateTime);
             if (DateStop != null && DateStop != DateTime.MinValue) _pDateStop.Value = DateStop;
             else _pDateStop.Value = DBNull.Value;
-            SqlParameter _pUserEmail = new SqlParameter("@vchUserEmail", SqlDbType.VarChar, 50);
+            SqlParameter _pUserEmail = new SqlParameter("@vchUserEmail", SqlDbType.NVarChar, 50);
             if (UserEmail.Length > 0) _pUserEmail.Value = UserEmail;
             else _pUserEmail.Value = DBNull.Value;
             SqlParameter _pAccountId = new SqlParameter("@intAcctId", SqlDbType.Int);
@@ -455,10 +455,10 @@ namespace bigWebApps.bigWebDesk.Data
             SqlParameter _pAccountLocationId = new SqlParameter("@AccountLocationId", SqlDbType.Int);
             if (AccountLocationId != 0) _pAccountLocationId.Value = AccountLocationId;
             else _pAccountLocationId.Value = DBNull.Value;
-            SqlParameter _pCustomXML = new SqlParameter("@CustomXML", SqlDbType.Text);
+            SqlParameter _pCustomXML = new SqlParameter("@CustomXML", SqlDbType.NText);
             if (CustomFields.Length > 0) _pCustomXML.Value = CustomFields;
             else _pCustomXML.Value = DBNull.Value;
-            SqlParameter _pIdMethod = new SqlParameter("@vchIdMethod", SqlDbType.VarChar);
+            SqlParameter _pIdMethod = new SqlParameter("@vchIdMethod", SqlDbType.NVarChar);
             if (IdMethod.Length > 0) _pIdMethod.Value = IdMethod.Length > 255 ? IdMethod.Substring(0, 255) : IdMethod;
             else _pIdMethod.Value = DBNull.Value;
             SqlParameter _pProjectID = new SqlParameter("@ProjectID", SqlDbType.Int);

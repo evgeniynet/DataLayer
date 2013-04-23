@@ -30,10 +30,10 @@ namespace bigWebApps.bigWebDesk.Data
             SqlParameter _pId=new SqlParameter("@Id", SqlDbType.Int);
             _pId.Direction=ParameterDirection.InputOutput;
             _pId.Value=DBNull.Value;
-            SqlParameter _pObjectStateNew = new SqlParameter("@ObjectStateNew", SqlDbType.Text);
+            SqlParameter _pObjectStateNew = new SqlParameter("@ObjectStateNew", SqlDbType.NText);
             if (ObjectStateNew.Length > 0) _pObjectStateNew.Value = ObjectStateNew;
             else _pObjectStateNew.Value = DBNull.Value;
-            SqlParameter _pObjectStateOld = new SqlParameter("@ObjectStateOld", SqlDbType.Text);
+            SqlParameter _pObjectStateOld = new SqlParameter("@ObjectStateOld", SqlDbType.NText);
             if (ObjectStateOld.Length > 0) _pObjectStateOld.Value = ObjectStateOld;
             else _pObjectStateOld.Value = DBNull.Value;
             SqlParameter _pScheduledTicketId = new SqlParameter("@ScheduledTicketId", SqlDbType.Int);

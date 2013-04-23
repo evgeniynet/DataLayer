@@ -487,7 +487,7 @@ namespace bigWebApps.bigWebDesk.Data
 				pInactiveStatus.Value = DBNull.Value;
 			else
 				pInactiveStatus.Value = (inactiveStatus == InactiveStatus.Inactive) ? true : false;
-			SqlParameter pSearch = new SqlParameter("@Search", SqlDbType.VarChar);
+			SqlParameter pSearch = new SqlParameter("@Search", SqlDbType.NVarChar);
 			if (!String.IsNullOrEmpty(Search))
 				pSearch.Value = "%" + Search + "%";
 			else
@@ -1270,7 +1270,7 @@ namespace bigWebApps.bigWebDesk.Data
 
 			public static string GetValue(int DeptID, int LocationId, int LocationTypePropertyId)
 			{
-				SqlParameter _pValue = new SqlParameter("@PropertyValue", SqlDbType.VarChar, 255);
+				SqlParameter _pValue = new SqlParameter("@PropertyValue", SqlDbType.NVarChar, 255);
 				_pValue.Direction = ParameterDirection.Output;
 				SqlCommand _cmd = CreateSqlCommand("sp_GetLocationPropertyValue", new SqlParameter[] { new SqlParameter("@DId", DeptID), new SqlParameter("@LocationId", LocationId), new SqlParameter("@LocationTypePropertyId", LocationTypePropertyId), _pValue });
 				if (_cmd.Connection.State == ConnectionState.Closed) _cmd.Connection.Open();

@@ -302,6 +302,11 @@ namespace bigWebApps.bigWebDesk
 
         private static string DisplayTimeFormat(DateTime date, bool omitUTC)
         {
+            return DisplayTimeFormat(date, omitUTC, UserContext.Current.TimeZone.BaseUtcOffset.Hours);
+        }
+
+        private static string DisplayTimeFormat(DateTime date, bool omitUTC, int hoursOffset)
+        {
             string sResult = string.Empty;
             //12:00AM/PM
             if (UserContext.Current.TimeFormat == 0)
@@ -313,7 +318,7 @@ namespace bigWebApps.bigWebDesk
             }
             //24:00 (UTC)
             else sResult = FormatTimePart(date.Hour) + ":" + FormatTimePart(date.Minute);
-            if (omitUTC) sResult += " (UTC" + Convert.ToString(UserContext.Current.TimeZone.BaseUtcOffset.Hours) + ")";
+            if (omitUTC) sResult += " (UTC" + Convert.ToString(hoursOffset) + ")";
             return sResult;
         }
 
@@ -737,6 +742,16 @@ namespace bigWebApps.bigWebDesk
             else _url = _server;
             _url += "?dept=" + dept.PseudoID + "&org=" + dept.OrganizationPseudoId + (_isUseHash && !IsForTech ? "&login=" + System.Web.HttpUtility.UrlEncode(UserEmail) + "&hash=" + Functions.CreateMD5hash(UserPassword.Length > 0 ? UserPassword : UserEmail) : string.Empty);
             return _url;
+        }
+
+        public static string DisplayDateTimeOffset(DateTime date, int hoursOffset, bool OmitUTC)
+        {
+            return string.Format(GetDisplayDateTimeFormat(UserContext.Current.TimeFormat, hoursOffset, OmitUTC), date.AddHours(hoursOffset));
+        }
+
+        public static string DisplayTimeOffset(DateTime date, int hoursOffset, bool omitUTC)
+        {
+            return DisplayTimeFormat(date.AddHours(hoursOffset), omitUTC, hoursOffset);
         }
     }
 }

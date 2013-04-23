@@ -30,7 +30,7 @@ namespace bigWebApps.bigWebDesk.Data
             SqlParameter _pRVAL = new SqlParameter("@RETURN_VALUE", SqlDbType.Int);
             _pRVAL.Direction = ParameterDirection.ReturnValue;
 
-            SqlParameter _pName = new SqlParameter("@vchName", SqlDbType.VarChar, 50);
+            SqlParameter _pName = new SqlParameter("@vchName", SqlDbType.NVarChar, 50);
             _pName.Direction = ParameterDirection.Output;
 
             UpdateData("sp_SelectSupportGroup",

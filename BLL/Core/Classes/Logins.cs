@@ -561,10 +561,10 @@ namespace bigWebApps.bigWebDesk.Data
             SqlParameter pLoginId = new SqlParameter("@LId", SqlDbType.Int);
             pLoginId.Direction = ParameterDirection.Output;
 
-            SqlParameter pEmail = new SqlParameter("@vchEmail", SqlDbType.VarChar, 50);
+            SqlParameter pEmail = new SqlParameter("@vchEmail", SqlDbType.NVarChar, 50);
             pEmail.Direction = ParameterDirection.Output;
 
-            SqlParameter pPassword = new SqlParameter("@vchPass", SqlDbType.VarChar, 50);
+            SqlParameter pPassword = new SqlParameter("@vchPass", SqlDbType.NVarChar, 50);
             pPassword.Direction = ParameterDirection.Output;
 
             UpdateData("sp_SelectLogOut", new SqlParameter[] {
@@ -812,7 +812,7 @@ namespace bigWebApps.bigWebDesk.Data
 
             SqlParameter pPassword = new SqlParameter("@password", DBNull.Value);
 
-            SqlParameter pMobileEmail = new SqlParameter("@MobileEmail", SqlDbType.VarChar, 50);
+            SqlParameter pMobileEmail = new SqlParameter("@MobileEmail", SqlDbType.NVarChar, 50);
             if (mobileEmail.Length > 0) pMobileEmail.Value = mobileEmail;
             else pMobileEmail.Value = DBNull.Value;
             SqlParameter pMobileEmailType = new SqlParameter("@MobileEmailType", SqlDbType.TinyInt);
@@ -969,7 +969,7 @@ namespace bigWebApps.bigWebDesk.Data
             pUId.Direction = ParameterDirection.InputOutput;
             pUId.Value = UId;
 
-            SqlParameter pUserPassword = new SqlParameter("@user_password", SqlDbType.VarChar, 50);
+            SqlParameter pUserPassword = new SqlParameter("@user_password", SqlDbType.NVarChar, 50);
             if (user_password.Length > 0) pUserPassword.Value = user_password;
             else pUserPassword.Value = DBNull.Value;
 
@@ -1004,7 +1004,7 @@ namespace bigWebApps.bigWebDesk.Data
             SqlParameter pLdapUserAccount = new SqlParameter("@LdapUserAccount", DBNull.Value);
             if (LdapUserAccount.Length > 0)
                 pLdapUserAccount.Value = LdapUserAccount;
-            SqlParameter pMobileEmail = new SqlParameter("@MobileEmail", SqlDbType.VarChar, 50);
+            SqlParameter pMobileEmail = new SqlParameter("@MobileEmail", SqlDbType.NVarChar, 50);
             if (MobileEmail.Length > 0) pMobileEmail.Value = MobileEmail;
             SqlParameter pMobileEmailType = new SqlParameter("MobileEmailType", SqlDbType.TinyInt);
             pMobileEmailType.Value = MobileEmailType;
@@ -1176,17 +1176,17 @@ namespace bigWebApps.bigWebDesk.Data
             pSuperUserId.Value = DBNull.Value;
             pSuperUserId.Direction = ParameterDirection.Output;
 
-            SqlParameter pSuperUserLocationId = new SqlParameter("@vchSUserRootLocationId", SqlDbType.VarChar);
+            SqlParameter pSuperUserLocationId = new SqlParameter("@vchSUserRootLocationId", SqlDbType.NVarChar);
             pSuperUserLocationId.Size = 1000;
             pSuperUserLocationId.Value = DBNull.Value;
             pSuperUserLocationId.Direction = ParameterDirection.Output;
 
-            SqlParameter pSuperUserLocationName = new SqlParameter("@vchSUserRootLocationName", SqlDbType.VarChar);
+            SqlParameter pSuperUserLocationName = new SqlParameter("@vchSUserRootLocationName", SqlDbType.NVarChar);
             pSuperUserLocationName.Value = DBNull.Value;
             pSuperUserLocationName.Size = 5000;
             pSuperUserLocationName.Direction = ParameterDirection.Output;
 
-            SqlParameter pDomainName = new SqlParameter("@vchDomainName", SqlDbType.VarChar);
+            SqlParameter pDomainName = new SqlParameter("@vchDomainName", SqlDbType.NVarChar);
             pDomainName.Value = DBNull.Value;
             pDomainName.Size = 100;
             pDomainName.Direction = ParameterDirection.Output;
@@ -1428,20 +1428,20 @@ namespace bigWebApps.bigWebDesk.Data
             _pLoginId.Direction = ParameterDirection.InputOutput;
             if (LoginId != 0) _pLoginId.Value = LoginId;
             else _pLoginId.Value = DBNull.Value;
-            SqlParameter _pPassword = new SqlParameter("@Password", SqlDbType.VarChar, 50);
+            SqlParameter _pPassword = new SqlParameter("@Password", SqlDbType.NVarChar, 50);
             if (Password != null && Password.Length > 0)
             {
                 if (Password == "0000") _pPassword.Value = GenerateRandomPassword();
                 else _pPassword.Value = Password;
             }
             else _pPassword.Value = DBNull.Value;
-            SqlParameter _pTitle = new SqlParameter("@Title", SqlDbType.VarChar, 30);
+            SqlParameter _pTitle = new SqlParameter("@Title", SqlDbType.NVarChar, 30);
             if (Title.Length > 0) _pTitle.Value = Title;
             else _pTitle.Value = DBNull.Value;
-            SqlParameter _pPhone = new SqlParameter("@Phone", SqlDbType.VarChar, 20);
+            SqlParameter _pPhone = new SqlParameter("@Phone", SqlDbType.NVarChar, 20);
             if (Phone.Length > 0) _pPhone.Value = Phone;
             else _pPhone.Value = DBNull.Value;
-            SqlParameter _pMobilePhone = new SqlParameter("@MobilePhone", SqlDbType.VarChar, 20);
+            SqlParameter _pMobilePhone = new SqlParameter("@MobilePhone", SqlDbType.NVarChar, 20);
             if (MobilePhone.Length > 0) _pMobilePhone.Value = MobilePhone;
             else _pMobilePhone.Value = DBNull.Value;
 

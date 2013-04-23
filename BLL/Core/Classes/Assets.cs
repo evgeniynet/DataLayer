@@ -1358,7 +1358,7 @@ namespace bigWebApps.bigWebDesk.Data
 					_having + ")=" + _custom_property_count + ") ";
 				_groupby = "Assets.DepartmentId,Assets.Id,Assets.OwnerId,Assets.CheckedOutId,Assets.TypeId,Assets.MakeId,Assets.ModelId," +
 					"Assets.location_id,Assets.LocationId,Assets.VendorId,Assets.WarrantyVendor,Assets.Name,Assets.SerialNumber,Assets.Description,Assets.Value," +
-					"Assets.DateAquired,Assets.LaborWarrantyLength,Assets.PartsWarrantyLength,CONVERT(nvarchar(4000),Assets.Notes),Assets.Room,Assets.PONumber,Assets.Active,Assets.FundingCode," +
+					"Assets.DateAquired,Assets.LaborWarrantyLength,Assets.PartsWarrantyLength,CONVERT(nvarchar(max),Assets.Notes),Assets.Room,Assets.PONumber,Assets.Active,Assets.FundingCode," +
 					"Assets.CategoryId,Assets.StatusId,Assets.AssetSort,Assets.DatePurchased,Assets.DateDeployed,Assets.DateOutOfService,Assets.DateEntered," +
 					"Assets.DateReceived,Assets.DateDisposed,Assets.ValueCurrent,Assets.ValueReplacement,Assets.ValueDepreciated,Assets.ValueSalvage,Assets.DisposalCost," +
 					"Assets.FundingSource,Assets.dtUpdated,Assets.intUpdatedBy,Assets.AccountId,Accounts.vchName,Assets.AssetNumber,Assets.AssetGUID," +
@@ -2641,7 +2641,7 @@ namespace bigWebApps.bigWebDesk.Data
 
 			public static string GetValue(int departmentId, int assetId, int assetTypePropertyId)
 			{
-				SqlParameter pPropertyValue = new SqlParameter("@PropertyValue", SqlDbType.VarChar, 255);
+				SqlParameter pPropertyValue = new SqlParameter("@PropertyValue", SqlDbType.NVarChar, 255);
 				pPropertyValue.Direction = ParameterDirection.Output;
 				SqlCommand sqlCommand = CreateSqlCommand("sp_GetAssetPropertyValue", new[] { new SqlParameter("@DId", departmentId), new SqlParameter("@AssetId", assetId), new SqlParameter("@AssetTypePropertyId", assetTypePropertyId), pPropertyValue });
 				if (sqlCommand.Connection.State == ConnectionState.Closed) sqlCommand.Connection.Open();

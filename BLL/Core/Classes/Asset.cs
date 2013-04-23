@@ -591,7 +591,7 @@ namespace bigWebApps.bigWebDesk.Data
             SqlParameter pReturnValue = new SqlParameter("@RETURN_VALUE", SqlDbType.Int);
             pReturnValue.Direction = ParameterDirection.ReturnValue;
 
-            SqlParameter pFullName = new SqlParameter("@FullName", SqlDbType.VarChar, 75);
+            SqlParameter pFullName = new SqlParameter("@FullName", SqlDbType.NVarChar, 75);
             pFullName.Direction = ParameterDirection.Output;
 
             UpdateData("sp_SelectUserFullName",

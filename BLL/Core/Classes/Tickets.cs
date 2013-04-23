@@ -133,25 +133,25 @@ namespace bigWebApps.bigWebDesk.Data
 			SqlParameter _pAccId = new SqlParameter("@AcctId", SqlDbType.Int);
 			_pAccId.Direction = ParameterDirection.InputOutput;
 			if (AccID != 0 || AccID == -1) _pAccId.Value = AccID;
-			SqlParameter _pAccName = new SqlParameter("@vchAcctName", SqlDbType.VarChar, 100);
+			SqlParameter _pAccName = new SqlParameter("@vchAcctName", SqlDbType.NVarChar, 100);
 			_pAccName.Direction = ParameterDirection.Output;
 			SqlParameter _pAccLocId = new SqlParameter("@AccountLocationId", SqlDbType.Int);
 			_pAccLocId.Direction = ParameterDirection.Output;
-			SqlParameter _pAccLocName = new SqlParameter("@AccountLocationName", SqlDbType.VarChar, 50);
+			SqlParameter _pAccLocName = new SqlParameter("@AccountLocationName", SqlDbType.NVarChar, 50);
 			_pAccLocName.Direction = ParameterDirection.Output;
 			SqlParameter _pUserDeptLocId = new SqlParameter("@UserDeptLocationId", SqlDbType.Int);
 			_pUserDeptLocId.Direction = ParameterDirection.Output;
 			SqlParameter _pAccDeptLocId = new SqlParameter("@AcctDeptLocationId", SqlDbType.Int);
 			_pAccDeptLocId.Direction = ParameterDirection.Output;
-			SqlParameter _pAccDeptLocName = new SqlParameter("@AcctDeptLocationName", SqlDbType.VarChar, 50);
+			SqlParameter _pAccDeptLocName = new SqlParameter("@AcctDeptLocationName", SqlDbType.NVarChar, 50);
 			_pAccDeptLocName.Direction = ParameterDirection.Output;
-			SqlParameter _pUserFirstName = new SqlParameter("@vchUserFirstName", SqlDbType.VarChar, 100);
+			SqlParameter _pUserFirstName = new SqlParameter("@vchUserFirstName", SqlDbType.NVarChar, 100);
 			_pUserFirstName.Direction = ParameterDirection.Output;
-			SqlParameter _pUserLastName = new SqlParameter("@vchUserLastName", SqlDbType.VarChar, 100);
+			SqlParameter _pUserLastName = new SqlParameter("@vchUserLastName", SqlDbType.NVarChar, 100);
 			_pUserLastName.Direction = ParameterDirection.Output;
 			SqlParameter _pHandleCallCentre = new SqlParameter("@btCfgCCRep", SqlDbType.Bit);
 			_pHandleCallCentre.Direction = ParameterDirection.Output;
-			SqlParameter _pUserEmail = new SqlParameter("@vchUserEmail", SqlDbType.VarChar, 100);
+			SqlParameter _pUserEmail = new SqlParameter("@vchUserEmail", SqlDbType.NVarChar, 100);
 			_pUserEmail.Direction = ParameterDirection.Output;
 			SqlParameter _pDeptAccCount = new SqlParameter("@DeptAccCount", SqlDbType.Int);
 			_pDeptAccCount.Direction = ParameterDirection.Output;
@@ -369,7 +369,7 @@ namespace bigWebApps.bigWebDesk.Data
 
 		public static void UpdatePart(int DeptID, int PartId, int Action, int UserId, string TicketLog)
 		{
-			SqlParameter _pLogNote = new SqlParameter("@vchTktLogNote", SqlDbType.VarChar, 5000);
+			SqlParameter _pLogNote = new SqlParameter("@vchTktLogNote", SqlDbType.NVarChar, -1);
 			if (TicketLog.Length > 4999) TicketLog = "--Text truncated at 5000 characters--<br><br>" + TicketLog.Substring(0, 4905) + "<br><br>--Text truncated at 5000 characters--";
 			if (TicketLog.Length > 0) _pLogNote.Value = TicketLog;
 			else _pLogNote.Value = DBNull.Value;
@@ -378,10 +378,10 @@ namespace bigWebApps.bigWebDesk.Data
 
 		public static void UpdatePart(int DeptID, int PartId, int Action, int UserId, string TicketLog, string VendorDescription, decimal PartCost, int PartQty)
 		{
-			SqlParameter _pVendorDescription = new SqlParameter("@VendorDescription", SqlDbType.VarChar, 150);
+			SqlParameter _pVendorDescription = new SqlParameter("@VendorDescription", SqlDbType.NVarChar, 150);
 			if (VendorDescription.Length > 0) _pVendorDescription.Value = VendorDescription;
 			else _pVendorDescription.Value = DBNull.Value;
-			SqlParameter _pLogNote = new SqlParameter("@vchTktLogNote", SqlDbType.VarChar, 5000);
+			SqlParameter _pLogNote = new SqlParameter("@vchTktLogNote", SqlDbType.NVarChar, -1);
 			if (TicketLog.Length > 4999) TicketLog = "--Text truncated at 5000 characters--<br><br>" + TicketLog.Substring(0, 4905) + "<br><br>--Text truncated at 5000 characters--";
 			if (TicketLog.Length > 0) _pLogNote.Value = TicketLog;
 			else _pLogNote.Value = DBNull.Value;
@@ -452,7 +452,7 @@ namespace bigWebApps.bigWebDesk.Data
 			_params[6] = new SqlParameter("@RemainHours", SqlDbType.Decimal);
 			if (RemainHours >= 0) _params[6].Value = RemainHours;
 			else _params[6].Value = DBNull.Value;
-			_params[7] = new SqlParameter("@Note", SqlDbType.VarChar);
+			_params[7] = new SqlParameter("@Note", SqlDbType.NVarChar);
 			if (!String.IsNullOrEmpty(Note)) _params[7].Value = Note;
 			else _params[7].Value = DBNull.Value;
 			_params[8] = new SqlParameter("@StartTime", SqlDbType.SmallDateTime);
@@ -837,7 +837,7 @@ namespace bigWebApps.bigWebDesk.Data
 			SqlParameter _pLevelId = new SqlParameter("@tintLevel", SqlDbType.TinyInt);
 			if (LevelId != 0) _pLevelId.Value = LevelId;
 			else _pLevelId.Value = DBNull.Value;
-			SqlParameter _pSubmissionCategoryName = new SqlParameter("@vchSubmissionCat", SqlDbType.VarChar, 50);
+			SqlParameter _pSubmissionCategoryName = new SqlParameter("@vchSubmissionCat", SqlDbType.NVarChar, 50);
 			if (!string.IsNullOrEmpty(SubmissionCategoryName)) _pSubmissionCategoryName.Value = SubmissionCategoryName;
 			else _pSubmissionCategoryName.Value = DBNull.Value;
 			SqlParameter _pCreationCategoryId = new SqlParameter("@intCategoryId", SqlDbType.Int);
@@ -849,19 +849,19 @@ namespace bigWebApps.bigWebDesk.Data
 			SqlParameter _pRequestComplDate = new SqlParameter("@dtReqComp", SqlDbType.SmallDateTime);
 			if (RequestComplDate!=DateTime.MinValue) _pRequestComplDate.Value = RequestComplDate;
 			else _pRequestComplDate.Value = DBNull.Value;
-			SqlParameter _pRequestComplNote = new SqlParameter("@vchReqComp", SqlDbType.VarChar, 50);
+			SqlParameter _pRequestComplNote = new SqlParameter("@vchReqComp", SqlDbType.NVarChar, 50);
 			if (!string.IsNullOrEmpty(RequestComplNote)) _pRequestComplNote.Value = RequestComplNote;
 			else _pRequestComplNote.Value = DBNull.Value;
-			SqlParameter _pIDMethod = new SqlParameter("@vchIdMethod", SqlDbType.VarChar, 255);
+			SqlParameter _pIDMethod = new SqlParameter("@vchIdMethod", SqlDbType.NVarChar, 255);
 			if (!string.IsNullOrEmpty(IDMethod)) _pIDMethod.Value = IDMethod.Length > 255 ? IDMethod.Substring(0, 255) : IDMethod;
 			else _pIDMethod.Value = DBNull.Value;
-			SqlParameter _pCustomFields = new SqlParameter("@CustomXML", SqlDbType.Text);
+			SqlParameter _pCustomFields = new SqlParameter("@CustomXML", SqlDbType.NText);
 			if (!string.IsNullOrEmpty(CustomFields)) _pCustomFields.Value = CustomFields;
 			else _pCustomFields.Value = DBNull.Value;
-			SqlParameter _pSubject = new SqlParameter("@subject", SqlDbType.VarChar, 100);
+			SqlParameter _pSubject = new SqlParameter("@subject", SqlDbType.NVarChar, 100);
 			if (Subject.Length > 0) _pSubject.Value = Subject;
 			else _pSubject.Value = DBNull.Value;
-			SqlParameter _pText = new SqlParameter("@vchInitPost", SqlDbType.VarChar, 5000);
+			SqlParameter _pText = new SqlParameter("@vchInitPost", SqlDbType.NVarChar, -1);
 			if (!string.IsNullOrEmpty(Text))
 			{
 				if (Text.Length > 4899) Text = "--Text truncated at 5000 characters--<br><br>" + Text.Substring(0, 4800) + "<br><br>--Text truncated at 5000 characters--";
@@ -870,7 +870,7 @@ namespace bigWebApps.bigWebDesk.Data
 			else _pText.Value = "(Initial post was blank.)";
 
 			//Depreciated Parameter
-			SqlParameter _pSerialNumber=new SqlParameter("@serialnumber", SqlDbType.VarChar, 50);
+			SqlParameter _pSerialNumber=new SqlParameter("@serialnumber", SqlDbType.NVarChar, 50);
 			if (!string.IsNullOrEmpty(SerialNumber)) _pSerialNumber.Value = SerialNumber;
 			else _pSerialNumber.Value=DBNull.Value;
 			//----
@@ -980,19 +980,19 @@ namespace bigWebApps.bigWebDesk.Data
 			SqlParameter _pRVAL = new SqlParameter("@RETURN_VALUE", SqlDbType.Int);
 			_pRVAL.Direction = ParameterDirection.ReturnValue;
 
-		    SqlParameter _pFirstName = new SqlParameter("@FirstName", SqlDbType.VarChar, 50);
+		    SqlParameter _pFirstName = new SqlParameter("@FirstName", SqlDbType.NVarChar, 50);
             _pFirstName.Direction = ParameterDirection.InputOutput;
 		    _pFirstName.Value = !string.IsNullOrEmpty(first_name) ? first_name : string.Empty;
 
-            SqlParameter _pLastName = new SqlParameter("@LastName", SqlDbType.VarChar, 50);
+            SqlParameter _pLastName = new SqlParameter("@LastName", SqlDbType.NVarChar, 50);
             _pLastName.Direction=ParameterDirection.InputOutput;
             _pLastName.Value = !string.IsNullOrEmpty(last_name) ? last_name : string.Empty;
 
             pin=Logins.GenerateRandomPassword();
-            SqlParameter _pPin = new SqlParameter("@Pin", SqlDbType.VarChar, 4);
+            SqlParameter _pPin = new SqlParameter("@Pin", SqlDbType.NVarChar, 4);
 		    _pPin.Value = pin;
 
-            SqlParameter _pFailureMsg = new SqlParameter("@FailureMsg", SqlDbType.VarChar, 5000);
+            SqlParameter _pFailureMsg = new SqlParameter("@FailureMsg", SqlDbType.NVarChar, -1);
 			_pFailureMsg.Direction = ParameterDirection.Output;
 
 			SqlParameter _pNewGlobalAcct = new SqlParameter("@NewGlobalAcct", SqlDbType.Bit);
@@ -1045,13 +1045,13 @@ namespace bigWebApps.bigWebDesk.Data
 			SqlParameter _pTechEmailPref = new SqlParameter("@TechEmailPref", SqlDbType.Bit);
 			_pTechEmailPref.Direction = ParameterDirection.Output;
 
-			SqlParameter _pTechName = new SqlParameter("@TechName", SqlDbType.VarChar, 100);
+			SqlParameter _pTechName = new SqlParameter("@TechName", SqlDbType.NVarChar, 100);
 			_pTechName.Direction = ParameterDirection.Output;
 
-			SqlParameter _pUserName = new SqlParameter("@UserName", SqlDbType.VarChar, 100);
+			SqlParameter _pUserName = new SqlParameter("@UserName", SqlDbType.NVarChar, 100);
 			_pUserName.Direction = ParameterDirection.Output;
 
-			SqlParameter _pTechEmail = new SqlParameter("@TechEmail", SqlDbType.VarChar, 100);
+			SqlParameter _pTechEmail = new SqlParameter("@TechEmail", SqlDbType.NVarChar, 100);
 			_pTechEmail.Direction = ParameterDirection.Output;
 
 			SqlParameter _pconfigPriorities = new SqlParameter("@configPriorities", SqlDbType.TinyInt);
@@ -1066,22 +1066,22 @@ namespace bigWebApps.bigWebDesk.Data
 			SqlParameter _pconfigClassTracking = new SqlParameter("@configClassTracking", SqlDbType.TinyInt);
 			_pconfigClassTracking.Direction = ParameterDirection.Output;
 
-			SqlParameter _pDepartmentName = new SqlParameter("@DepartmentName", SqlDbType.VarChar, 150);
+			SqlParameter _pDepartmentName = new SqlParameter("@DepartmentName", SqlDbType.NVarChar, 150);
 			_pDepartmentName.Direction = ParameterDirection.Output;
 
-			SqlParameter _pLogoName = new SqlParameter("@LogoName", SqlDbType.VarChar, 50);
+			SqlParameter _pLogoName = new SqlParameter("@LogoName", SqlDbType.NVarChar, 50);
 			_pLogoName.Direction = ParameterDirection.Output;
 
 			SqlParameter _pTktNumber = new SqlParameter("@TktNumber", SqlDbType.Int);
 			_pTktNumber.Direction = ParameterDirection.Output;
 
-			SqlParameter _pClassName = new SqlParameter("@ClassName", SqlDbType.VarChar, 50);
+			SqlParameter _pClassName = new SqlParameter("@ClassName", SqlDbType.NVarChar, 50);
 			_pClassName.Direction = ParameterDirection.Output;
 
-			SqlParameter _pLocationName = new SqlParameter("@LocationName", SqlDbType.VarChar, 50);
+			SqlParameter _pLocationName = new SqlParameter("@LocationName", SqlDbType.NVarChar, 50);
 			_pLocationName.Direction = ParameterDirection.Output;
 
-			SqlParameter _pSuccessMsg = new SqlParameter("@SuccessMsg", SqlDbType.VarChar, 5000);
+			SqlParameter _pSuccessMsg = new SqlParameter("@SuccessMsg", SqlDbType.NVarChar, -1);
 			_pSuccessMsg.Direction = ParameterDirection.Output;
 
 			SqlParameter _pdtSLAComplete = new SqlParameter("@dtSLAComplete", SqlDbType.DateTime);
@@ -1093,7 +1093,7 @@ namespace bigWebApps.bigWebDesk.Data
 			SqlParameter _ptintPriority = new SqlParameter("@tintPriority", SqlDbType.TinyInt);
 			_ptintPriority.Direction = ParameterDirection.Output;
 
-			SqlParameter _pvchPriority = new SqlParameter("@vchPriority", SqlDbType.VarChar, 50);
+			SqlParameter _pvchPriority = new SqlParameter("@vchPriority", SqlDbType.NVarChar, 50);
 			_pvchPriority.Direction = ParameterDirection.Output;
 
 			SqlParameter _pbitConfigLVL = new SqlParameter("@bitConfigLVL", SqlDbType.Bit);
@@ -1108,13 +1108,13 @@ namespace bigWebApps.bigWebDesk.Data
 			SqlParameter _pbtCfgAcctMngr = new SqlParameter("@btCfgAcctMngr", SqlDbType.Bit);
 			_pbtCfgAcctMngr.Direction = ParameterDirection.Output;
 
-			SqlParameter _pvchAcctName = new SqlParameter("@vchAcctName", SqlDbType.VarChar, 100);
+			SqlParameter _pvchAcctName = new SqlParameter("@vchAcctName", SqlDbType.NVarChar, 100);
 			_pvchAcctName.Direction = ParameterDirection.Output;
 
-			SqlParameter _pvchAcctLocName = new SqlParameter("@vchAcctLocName", SqlDbType.VarChar, 25);
+			SqlParameter _pvchAcctLocName = new SqlParameter("@vchAcctLocName", SqlDbType.NVarChar, 25);
 			_pvchAcctLocName.Direction = ParameterDirection.Output;
 
-			SqlParameter _pvchErrMsg = new SqlParameter("@vchErrMsg", SqlDbType.VarChar, 1000);
+			SqlParameter _pvchErrMsg = new SqlParameter("@vchErrMsg", SqlDbType.NVarChar, 1000);
 			_pvchErrMsg.Direction = ParameterDirection.Output;
 
 			SqlParameter _pbtCfgSuppressBWALogos = new SqlParameter("@btCfgSuppressBWALogos", SqlDbType.Bit);
@@ -1265,7 +1265,7 @@ namespace bigWebApps.bigWebDesk.Data
 			_params[7] = new SqlParameter("@RemainHours", SqlDbType.Decimal);
 			if (RemainHours >= 0) _params[7].Value = RemainHours;
 			else _params[7].Value = DBNull.Value;
-			_params[8] = new SqlParameter("@Note", SqlDbType.VarChar);
+			_params[8] = new SqlParameter("@Note", SqlDbType.NVarChar);
 			if (!String.IsNullOrEmpty(Note)) _params[8].Value = Note;
 			else _params[8].Value = DBNull.Value;
 			_params[9] = new SqlParameter("@StartTime", SqlDbType.SmallDateTime);

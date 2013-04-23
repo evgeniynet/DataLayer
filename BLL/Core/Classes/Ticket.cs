@@ -1125,7 +1125,7 @@ namespace bigWebApps.bigWebDesk.Data
 			SqlParameter _pFollowUpDate = new SqlParameter("@dtFollowUp", SqlDbType.SmallDateTime);
 			if (FollowUpDateTime == DateTime.MinValue) _pFollowUpDate.Value = DBNull.Value;
 			else _pFollowUpDate.Value = FollowUpDateTime;
-			SqlParameter _pFollowupNote = new SqlParameter("@vchFollowUpNote", SqlDbType.VarChar, 50);
+			SqlParameter _pFollowupNote = new SqlParameter("@vchFollowUpNote", SqlDbType.NVarChar, 50);
 			if (FollowUpNote.Length > 0) _pFollowupNote.Value = FollowUpNote;
 			else _pFollowupNote.Value = DBNull.Value;
 			UpdateData("sp_UpdateTktFUD", new SqlParameter[] { new SqlParameter("@DId", DeptID), new SqlParameter("@TId", TktID), _pFollowUpDate, _pFollowupNote });
@@ -1172,7 +1172,7 @@ namespace bigWebApps.bigWebDesk.Data
 
 		public static void UpdateConfirmation(Guid OrgId, int DeptID, int TktID, int UserID, bool IsConfirmed, string ConfirmationNote)
 		{
-			SqlParameter _pConfirmationNote = new SqlParameter("@vchConfirmedNote", SqlDbType.VarChar, 254);
+			SqlParameter _pConfirmationNote = new SqlParameter("@vchConfirmedNote", SqlDbType.NVarChar, 254);
 			if (ConfirmationNote.Length > 0) _pConfirmationNote.Value = ConfirmationNote;
 			else _pConfirmationNote.Value = DBNull.Value;
 			UpdateData("sp_UpdateTicketConfirmation", new SqlParameter[] { new SqlParameter("@DepartmentId", DeptID), new SqlParameter("@TicketId", TktID), new SqlParameter("@UId", UserID), new SqlParameter("@btConfirmed", IsConfirmed), _pConfirmationNote }, OrgId);
@@ -1185,7 +1185,7 @@ namespace bigWebApps.bigWebDesk.Data
 
 		public static void UpdateIDMethod(int DeptID, int TktID, string IDMethod)
 		{
-			SqlParameter _pIDMethod = new SqlParameter("@vchIdMethod", SqlDbType.VarChar, 255);
+			SqlParameter _pIDMethod = new SqlParameter("@vchIdMethod", SqlDbType.NVarChar, 255);
 			if (IDMethod.Length > 0) _pIDMethod.Value = IDMethod;
 			else _pIDMethod.Value = DBNull.Value;
 			UpdateData("sp_UpdateTicketIDMethod", new SqlParameter[] { new SqlParameter("@CompanyId", DeptID), new SqlParameter("@TicketId", TktID), _pIDMethod });
@@ -1224,7 +1224,7 @@ namespace bigWebApps.bigWebDesk.Data
 			SqlParameter _pRequestCompletionDate = new SqlParameter("@dtReqComp", SqlDbType.SmallDateTime);
 			if (RequestCompletionDate == DateTime.MinValue) _pRequestCompletionDate.Value = DBNull.Value;
 			else _pRequestCompletionDate.Value = RequestCompletionDate;
-			SqlParameter _pRequestCompletionNote = new SqlParameter("@vchReqComp", SqlDbType.VarChar, 50);
+			SqlParameter _pRequestCompletionNote = new SqlParameter("@vchReqComp", SqlDbType.NVarChar, 50);
 			if (RequestCompletionNote.Length > 0) _pRequestCompletionNote.Value = RequestCompletionNote;
 			else _pRequestCompletionNote.Value = DBNull.Value;
 			UpdateData("sp_UpdateTktRCD", new SqlParameter[] { new SqlParameter("@DId", DeptID), new SqlParameter("@TId", TktID), _pRequestCompletionDate, _pRequestCompletionNote });
@@ -1239,23 +1239,23 @@ namespace bigWebApps.bigWebDesk.Data
 
         public static string InsertResponse(Guid OrgId, int DeptID, int TktID, int UserId, bool PickUp, bool UserTypeUser, bool PlaceOnHold, string LogText, string systemGeneratedText = "", int TimeLogID = 0, string To = null, bool reopenClosedOnHold = true)
 		{
-			SqlParameter _pLogText = new SqlParameter("@LogText", SqlDbType.VarChar, 5000);
+			SqlParameter _pLogText = new SqlParameter("@LogText", SqlDbType.NVarChar, -1);
 			_pLogText.Direction = ParameterDirection.InputOutput;
 			if (LogText.Length > 4899) LogText = "--Text truncated at 5000 characters--<br><br>" + LogText.Substring(0, 4800) + "<br><br>--Text truncated at 5000 characters--";
 			if (LogText.Length > 0) _pLogText.Value = LogText;
 			else _pLogText.Value = DBNull.Value;
-			SqlParameter _pEmailSubject = new SqlParameter("@EmailSubject", SqlDbType.VarChar, 100);
+			SqlParameter _pEmailSubject = new SqlParameter("@EmailSubject", SqlDbType.NVarChar, 100);
 			_pEmailSubject.Direction = ParameterDirection.InputOutput;
-			SqlParameter _pUserFullName = new SqlParameter("@UserFullName", SqlDbType.VarChar, 100);
+			SqlParameter _pUserFullName = new SqlParameter("@UserFullName", SqlDbType.NVarChar, 100);
 			_pUserFullName.Direction = ParameterDirection.InputOutput;
 
-			SqlParameter pSystemGeneratedText = new SqlParameter("@SystemGeneratedText", SqlDbType.VarChar, 5000);
+			SqlParameter pSystemGeneratedText = new SqlParameter("@SystemGeneratedText", SqlDbType.NVarChar, -1);
 			if (string.IsNullOrEmpty(systemGeneratedText))
 				pSystemGeneratedText.Value = DBNull.Value;
 			else
 				pSystemGeneratedText.Value = systemGeneratedText;
 
-			SqlParameter _pTo = new SqlParameter("@To", SqlDbType.VarChar, 1000);
+			SqlParameter _pTo = new SqlParameter("@To", SqlDbType.NVarChar, 1000);
 			if (string.IsNullOrEmpty(To))
 				_pTo.Value = DBNull.Value;
 			else
@@ -1409,11 +1409,11 @@ namespace bigWebApps.bigWebDesk.Data
 		private static void InsertLogMessage(Guid OrgID, int DeptID, int TktID, int UserId, string LogType, string LogText, string systemGeneratedText, int TimeLogID)
 		{
 			if (LogText.Length > 4999) LogText = "--Text truncated at 5000 characters--<br><br>" + LogText.Substring(0, 4905) + "<br><br>--Text truncated at 5000 characters--";
-			SqlParameter _pNote = new SqlParameter("@vchNote", SqlDbType.VarChar, 5000);
+			SqlParameter _pNote = new SqlParameter("@vchNote", SqlDbType.NVarChar, -1);
 			if (LogText.Length > 0) _pNote.Value = LogText;
 			else _pNote.Value = DBNull.Value;
 			
-			SqlParameter pSystemGeneratedText = new SqlParameter("@SystemGeneratedText", SqlDbType.VarChar, 5000);
+			SqlParameter pSystemGeneratedText = new SqlParameter("@SystemGeneratedText", SqlDbType.NVarChar, -1);
 			if (!string.IsNullOrEmpty(systemGeneratedText)) pSystemGeneratedText.Value = systemGeneratedText;
 			else pSystemGeneratedText.Value = DBNull.Value;
 
@@ -1452,11 +1452,11 @@ namespace bigWebApps.bigWebDesk.Data
 
 		public static void UpdatePriority(int DeptID, int TicketId, int PriorityId)
 		{
-			SqlParameter _pOldPriName = new SqlParameter("@OldPriName", SqlDbType.VarChar, 50);
+			SqlParameter _pOldPriName = new SqlParameter("@OldPriName", SqlDbType.NVarChar, 50);
 			_pOldPriName.Direction = ParameterDirection.Output;
 			SqlParameter _pOldPriInt = new SqlParameter("@OldPriInt", SqlDbType.TinyInt);
 			_pOldPriInt.Direction = ParameterDirection.Output;
-			SqlParameter _pNewPriName = new SqlParameter("@NewPriName", SqlDbType.VarChar, 50);
+			SqlParameter _pNewPriName = new SqlParameter("@NewPriName", SqlDbType.NVarChar, 50);
 			_pNewPriName.Direction = ParameterDirection.Output;
 			SqlParameter _pNewPriInt = new SqlParameter("@NewPriInt", SqlDbType.TinyInt);
 			_pNewPriInt.Direction = ParameterDirection.Output;
@@ -1670,9 +1670,9 @@ namespace bigWebApps.bigWebDesk.Data
 
 		public static void UpdateTransferByClass(Guid OrgId, int DeptID, int TicketId, int ClassId, bool KeepPriority, bool KeepLevel, bool keepTechnicianAssigned)
 		{
-			SqlParameter _pOldTechName = new SqlParameter("@OldTechName", SqlDbType.VarChar, 100);
+			SqlParameter _pOldTechName = new SqlParameter("@OldTechName", SqlDbType.NVarChar, 100);
 			_pOldTechName.Direction = ParameterDirection.Output;
-			SqlParameter _pNewTechName = new SqlParameter("@NewTechName", SqlDbType.VarChar, 100);
+			SqlParameter _pNewTechName = new SqlParameter("@NewTechName", SqlDbType.NVarChar, 100);
 			_pNewTechName.Direction = ParameterDirection.Output;
 			UpdateData("sp_UpdateTktTransferByClass", new SqlParameter[] { new SqlParameter("@DId", DeptID), new SqlParameter("@TId", TicketId), new SqlParameter("@ClassId", ClassId), _pOldTechName, _pNewTechName, new SqlParameter("@btNoPriorityChange", KeepPriority), new SqlParameter("@btKeepCurrentLevel", KeepLevel), new SqlParameter("@KeepTechnicianAssigned", keepTechnicianAssigned) }, OrgId);
 		}
@@ -1689,12 +1689,12 @@ namespace bigWebApps.bigWebDesk.Data
 			SqlParameter _pDirection = new SqlParameter("@vchDirection", SqlDbType.VarChar, 4);
 			if (UpDirection) _pDirection.Value = "up";
 			else _pDirection.Value = "down";
-			SqlParameter _pText = new SqlParameter("@vchText", SqlDbType.VarChar, 5000);
+			SqlParameter _pText = new SqlParameter("@vchText", SqlDbType.NVarChar, -1);
 			_pText.Direction = ParameterDirection.InputOutput;
 			if (NoteText.Length > 4999) NoteText = "--Text truncated at 5000 characters--<br><br>" + NoteText.Substring(0, 4905) + "<br><br>--Text truncated at 5000 characters--";
 			if (NoteText.Length > 0) _pText.Value = NoteText;
 			else _pText.Value = DBNull.Value;
-			SqlParameter _pNoteType = new SqlParameter("@vchNoteType", SqlDbType.VarChar, 50);
+			SqlParameter _pNoteType = new SqlParameter("@vchNoteType", SqlDbType.NVarChar, 50);
 			_pNoteType.Direction = ParameterDirection.Output;
 			UpdateData("sp_EscalateTicket", new SqlParameter[] { _pRVAL, new SqlParameter("@DId", DeptID), new SqlParameter("@TId", TicketId), new SqlParameter("@UId", UserId), _pDirection, _pText, _pNoteType, new SqlParameter("@KeepTechnicianAssigned", keepTechnicianAssigned) });
 			return (int)_pRVAL.Value;
@@ -1704,12 +1704,12 @@ namespace bigWebApps.bigWebDesk.Data
 		{
 			SqlParameter _pTId = new SqlParameter("@TId", SqlDbType.Int);
 			_pTId.Value = DBNull.Value;
-			SqlParameter _pLogNote = new SqlParameter("@vchNote", SqlDbType.VarChar, 5000);
+			SqlParameter _pLogNote = new SqlParameter("@vchNote", SqlDbType.NVarChar, -1);
 			if (LogNote.Length > 4999) LogNote = "--Text truncated at 5000 characters--<br><br>" + LogNote.Substring(0, 4905) + "<br><br>--Text truncated at 5000 characters--";
 			if (LogNote.Length > 0) _pLogNote.Value = LogNote;
 			else _pLogNote.Value = DBNull.Value;
 
-			SqlParameter pSystemGeneratedText = new SqlParameter("@SystemGeneratedText", SqlDbType.VarChar, 5000);
+			SqlParameter pSystemGeneratedText = new SqlParameter("@SystemGeneratedText", SqlDbType.NVarChar, -1);
 			if (!string.IsNullOrEmpty(systemGeneratedText)) pSystemGeneratedText.Value = systemGeneratedText;
 			else pSystemGeneratedText.Value = DBNull.Value;
 

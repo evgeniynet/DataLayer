@@ -77,11 +77,11 @@ namespace bigWebApps.bigWebDesk.Data
 			SqlParameter _pFilterEnabled = new SqlParameter("@btFilterEnabled", SqlDbType.Bit);
 			_pFilterEnabled.Direction = ParameterDirection.InputOutput;
 			_pFilterEnabled.Value = DBNull.Value;
-			SqlParameter _pFields = new SqlParameter("@vchWrkLstFields", SqlDbType.VarChar, 30);
+			SqlParameter _pFields = new SqlParameter("@vchWrkLstFields", SqlDbType.NVarChar, 30);
 			_pFields.Direction = ParameterDirection.InputOutput;
 			if (fields.Length > 0) _pFields.Value = fields;
 			else _pFields.Value = DBNull.Value;
-			SqlParameter _pSort = new SqlParameter("@vchWrkLstSort", SqlDbType.VarChar, 25);
+			SqlParameter _pSort = new SqlParameter("@vchWrkLstSort", SqlDbType.NVarChar, 25);
 			_pSort.Direction = ParameterDirection.InputOutput;
 			if (sort.Length > 0) _pSort.Value = sort;
 			else _pSort.Value = DBNull.Value;
@@ -1285,7 +1285,7 @@ namespace bigWebApps.bigWebDesk.Data
 		{
             string _query = "SELECT 0 as DaysOld, tkt.id as TicketId, tkt.Status, tkt.technician_id, tkt.user_id, tkt.TicketNumber, tkt.TicketNumberPrefix, ISNULL(tkt.TicketNumberPrefix,'')+CAST(tkt.TicketNumber AS nvarchar(10)) AS TicketNumberFull, tkt.CreateTime, tkt.ClosedTime";
 			_query += ", tkt.newtechpost, tkt.newuserpost, tkt.dtFollowUp, tkt.subject, tkt.NextStep, tkt.NextStepDate, tkt.SchedTicketID";
-			if (!qfilter.IsPrintMode) _query += ", ISNULL((SELECT TOP 1 1 FROM Mfs_File fsf WHERE fsf.OrganizationId='" + usr.InstanceID.ToString() + "' AND fsf.DepartmentId='" + usr.InstanceID.ToString() + "' AND fsf.LocalObjectId=CAST(tkt.id AS varchar(255))), 0) as files_count";
+			if (!qfilter.IsPrintMode) _query += ", ISNULL((SELECT TOP 1 1 FROM Mfs_File fsf WHERE fsf.OrganizationId='" + usr.InstanceID.ToString() + "' AND fsf.DepartmentId='" + usr.InstanceID.ToString() + "' AND fsf.LocalObjectId=CAST(tkt.id AS nvarchar(255))), 0) as files_count";
 			else _query += ", dbo.fxSelectInitialPost(tkt.company_id,tkt.id) AS InitPost";
 			if (cfg.ResolutionTracking) _query += ", ISNULL(tkt.btResolved, 0) btResolved, CASE ISNULL(tkt.btResolved, 0) WHEN 1 THEN 'Resolved' ELSE 'UnResolved' END+CASE WHEN NOT rc.vchName IS NULL AND LEN(rc.vchName)>0 THEN ' - '+rc.vchName ELSE '' END AS Resolution";
 			if (cfg.ResolutionTracking && cfg.ConfirmationTracking) _query += ", CASE WHEN ISNULL(tkt.btResolved, 0)=1 THEN tkt.btConfirmed ELSE CAST (1 AS bit) END AS btConfirmed";

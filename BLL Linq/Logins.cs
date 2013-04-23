@@ -66,7 +66,7 @@ namespace lib.bwa.bigWebDesk.LinqBll
         static public Dictionary<string, string> GetFieldAlias()
         {
             Dictionary<string, string> a = new Dictionary<string, string>();
-            a.Add("key", "cast(l.id as varchar(MAX))");
+            a.Add("key", "cast(l.id as nvarchar(MAX))");
 
             a.Add("email", "l.Email");
             a.Add("first_name", "l.FirstName");

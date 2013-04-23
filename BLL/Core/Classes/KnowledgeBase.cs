@@ -148,7 +148,7 @@ namespace bigWebApps.bigWebDesk.Data
             SqlParameter _pAccountLocationId = new SqlParameter("@AccountLocationId", SqlDbType.Int);
             if (accountLocationId > 0) _pAccountLocationId.Value = accountLocationId;
             else _pAccountLocationId.Value = DBNull.Value;
-            SqlParameter _pSubmissionCategoryName = new SqlParameter("@vchSubmissionCat", SqlDbType.VarChar, 50);
+            SqlParameter _pSubmissionCategoryName = new SqlParameter("@vchSubmissionCat", SqlDbType.NVarChar, 50);
             if (submissionCategoryName.Length > 0) _pSubmissionCategoryName.Value = submissionCategoryName;
             else _pSubmissionCategoryName.Value = DBNull.Value;
             SqlParameter _pCreationCategoryId = new SqlParameter("@intCategoryId", SqlDbType.Int);
@@ -212,7 +212,7 @@ namespace bigWebApps.bigWebDesk.Data
             string userEmail)
         {
             if (LogText.Length > 4999) LogText = "--Text truncated at 5000 characters--<br><br>" + LogText.Substring(0, 4905) + "<br><br>--Text truncated at 5000 characters--";
-            SqlParameter _pNote = new SqlParameter("@vchNote", SqlDbType.VarChar, 5000);
+            SqlParameter _pNote = new SqlParameter("@vchNote", SqlDbType.NVarChar);
             if (LogText.Length > 0) _pNote.Value = LogText;
             else _pNote.Value = DBNull.Value;
             UpdateData("sp_InsertKBResponse", new SqlParameter[] { 

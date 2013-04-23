@@ -145,18 +145,18 @@ namespace bigWebApps.bigWebDesk.Data
                     _sqlGroup = "GROUP BY LC.GroupId ";
                     break;
                 case Grouping.Month:
-                    _sqlSelect = "SELECT CAST(CAST(YEAR(T.CreateTime) AS varchar(4))+'/'+CAST(MONTH(T.CreateTime) AS varchar(2))+'/1' AS datetime) AS Month, MAX(CAST(CAST(YEAR(T.CreateTime) AS varchar(4))+CAST(MONTH(T.CreateTime) AS varchar(2)) AS int)) AS ID, MAX(DATENAME(month,T.CreateTime)+' '+CAST(YEAR(T.CreateTime) AS varchar(4))) AS YAxis, " + _sqlSelectFields
+                    _sqlSelect = "SELECT CAST(CAST(YEAR(T.CreateTime) AS nvarchar(4))+'/'+CAST(MONTH(T.CreateTime) AS nvarchar(2))+'/1' AS datetime) AS Month, MAX(CAST(CAST(YEAR(T.CreateTime) AS nvarchar(4))+CAST(MONTH(T.CreateTime) AS nvarchar(2)) AS int)) AS ID, MAX(DATENAME(month,T.CreateTime)+' '+CAST(YEAR(T.CreateTime) AS nvarchar(4))) AS YAxis, " + _sqlSelectFields
                         + "FROM tbl_ticket T ";
-                    _sqlGroup = "GROUP BY CAST(CAST(YEAR(T.CreateTime) AS varchar(4))+'/'+CAST(MONTH(T.CreateTime) AS varchar(2))+'/1' AS datetime) ";
+                    _sqlGroup = "GROUP BY CAST(CAST(YEAR(T.CreateTime) AS nvarchar(4))+'/'+CAST(MONTH(T.CreateTime) AS nvarchar(2))+'/1' AS datetime) ";
                     break;
                 case Grouping.Priority:
-                    _sqlSelect = "SELECT ISNULL(P.Id, -1) AS ID, MAX(CAST(P.tintPriority as varchar(5))+'-'+P.Name) AS YAxis, " + _sqlSelectFields
+                    _sqlSelect = "SELECT ISNULL(P.Id, -1) AS ID, MAX(CAST(P.tintPriority as nvarchar(5))+'-'+P.Name) AS YAxis, " + _sqlSelectFields
                         + "FROM tbl_ticket T LEFT OUTER JOIN Priorities P ON P.DId=" + DId.ToString() + " AND P.Id=T.PriorityId ";
                     _sqlGroup = "GROUP BY P.Id ";
                     break;
                 //tkt #3949: Level Filter added to Ticket Count Report
                 case Grouping.TicketLevel:
-                    _sqlSelect = "SELECT ISNULL(CAST(L.tintLevel as int), -1) AS ID, MAX(CAST(L.tintLevel as varchar(5))+ CASE WHEN L.LevelName IS NOT NULL THEN '-'+L.LevelName ELSE '' END ) AS YAxis, " + _sqlSelectFields
+                    _sqlSelect = "SELECT ISNULL(CAST(L.tintLevel as int), -1) AS ID, MAX(CAST(L.tintLevel as nvarchar(5))+ CASE WHEN L.LevelName IS NOT NULL THEN '-'+L.LevelName ELSE '' END ) AS YAxis, " + _sqlSelectFields
                         + "FROM tbl_ticket T LEFT OUTER JOIN TktLevels L ON L.DId=" + DId.ToString() + " AND L.tintLevel=T.tintLevel ";
                     _sqlGroup = "GROUP BY L.tintLevel ";
                     break;

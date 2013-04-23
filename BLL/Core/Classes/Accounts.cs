@@ -663,7 +663,7 @@ namespace bigWebApps.bigWebDesk.Data
 
         public static string SelectAccountName(int DepartmentId, int AccountId)
         {
-            SqlParameter accountName = new SqlParameter("@vchAcctName", SqlDbType.VarChar, 100);
+            SqlParameter accountName = new SqlParameter("@vchAcctName", SqlDbType.NVarChar, 100);
             accountName.Direction = ParameterDirection.Output;
             accountName.IsNullable = true;
             accountName.Value = 0;
@@ -700,7 +700,7 @@ namespace bigWebApps.bigWebDesk.Data
 
         public static DataTable SelectUsers(int DeptID, int AccountID, string Search, InactiveStatus inactiveStatus, int MaxCount)
         {
-            SqlParameter _pSearch = new SqlParameter("@strSearch", SqlDbType.VarChar, 25);
+            SqlParameter _pSearch = new SqlParameter("@strSearch", SqlDbType.NVarChar, 25);
             SqlParameter _pInactive = new SqlParameter("@btInactive", SqlDbType.Bit);
             SqlParameter _pMaxCount = new SqlParameter("@Top", SqlDbType.Int);
 
@@ -719,11 +719,11 @@ namespace bigWebApps.bigWebDesk.Data
 
         public static void UpdateBrowseColumns(int DeptID, int UserId, string fields, string sort)
         {
-            SqlParameter _pAccFields = new SqlParameter("@vchAcctFields", SqlDbType.VarChar, 30);
+            SqlParameter _pAccFields = new SqlParameter("@vchAcctFields", SqlDbType.NVarChar, 30);
             _pAccFields.Direction = ParameterDirection.InputOutput;
             if (fields.Length > 0) _pAccFields.Value = fields;
             else _pAccFields.Value = DBNull.Value;
-            SqlParameter _pAccSort = new SqlParameter("@vchAcctSort", SqlDbType.VarChar, 25);
+            SqlParameter _pAccSort = new SqlParameter("@vchAcctSort", SqlDbType.NVarChar, 25);
             _pAccSort.Direction = ParameterDirection.InputOutput;
             if (sort.Length > 0) _pAccSort.Value = sort;
             else _pAccSort.Value = DBNull.Value;
@@ -732,9 +732,9 @@ namespace bigWebApps.bigWebDesk.Data
 
         public static string[] SelectBrowseColumns(int DeptID, int UserId)
         {
-            SqlParameter _pAccFields = new SqlParameter("@vchAcctFields", SqlDbType.VarChar, 30);
+            SqlParameter _pAccFields = new SqlParameter("@vchAcctFields", SqlDbType.NVarChar, 30);
             _pAccFields.Direction = ParameterDirection.Output;
-            SqlParameter _pAccSort = new SqlParameter("@vchAcctSort", SqlDbType.VarChar, 25);
+            SqlParameter _pAccSort = new SqlParameter("@vchAcctSort", SqlDbType.NVarChar, 25);
             _pAccSort.Direction = ParameterDirection.Output;
             UpdateData("sp_SelectAcctFields", new SqlParameter[] { new SqlParameter("@Mode", "S"), new SqlParameter("@DId", DeptID), new SqlParameter("@UId", UserId), _pAccFields, _pAccSort });
             return new string[] { _pAccFields.Value.ToString(), _pAccSort.Value.ToString() };
@@ -796,7 +796,7 @@ namespace bigWebApps.bigWebDesk.Data
                     _query += " OR (dbo.fxGetUserLocationName(" + userAuth.lngDId.ToString() + ", a.LocationId) LIKE '%" + _fstr + "%')";
                 }
                 _query += " OR (";
-                _query += " CAST(a.intBWDAcctNum as varchar) LIKE '%" + _fstr + "%' OR a.vchRef1Num LIKE '%" + _fstr + "%' OR a.vchRef2Num LIKE '%" + _fstr + "%' OR a.vchAcctNum LIKE '%" + _fstr + "%'))";
+                _query += " CAST(a.intBWDAcctNum as nvarchar) LIKE '%" + _fstr + "%' OR a.vchRef1Num LIKE '%" + _fstr + "%' OR a.vchRef2Num LIKE '%" + _fstr + "%' OR a.vchAcctNum LIKE '%" + _fstr + "%'))";
             }
 
             string internalAccountName = userAuth.strGDName + " (Internal)";
@@ -948,7 +948,7 @@ namespace bigWebApps.bigWebDesk.Data
 
         public static DataTable SelectFiles(int DeptID, int AccountID, string Search)
         {
-            SqlParameter _pSearch = new SqlParameter("@strSearch", SqlDbType.VarChar, 25);
+            SqlParameter _pSearch = new SqlParameter("@strSearch", SqlDbType.NVarChar, 25);
             if (Search.Length > 0) _pSearch.Value = Search;
             else _pSearch.Value = DBNull.Value;
             return SelectRecords("sp_SelectAcctFiles", new SqlParameter[] { new SqlParameter("@DId", DeptID), new SqlParameter("@AcctId", AccountID), _pSearch });
@@ -960,7 +960,7 @@ namespace bigWebApps.bigWebDesk.Data
             pBWAFileId.Direction = ParameterDirection.Output;
             pBWAFileId.Value = DBNull.Value;
 
-            SqlParameter pFileName = new SqlParameter("@vchName", SqlDbType.VarChar, 100);
+            SqlParameter pFileName = new SqlParameter("@vchName", SqlDbType.NVarChar, 100);
             pFileName.Direction = ParameterDirection.Output;
             pFileName.Value = DBNull.Value;
 
@@ -1047,7 +1047,7 @@ namespace bigWebApps.bigWebDesk.Data
             pModified.Direction = ParameterDirection.Output;
 
 
-            SqlParameter pName = new SqlParameter("@vchName", SqlDbType.VarChar, 100);
+            SqlParameter pName = new SqlParameter("@vchName", SqlDbType.NVarChar, 100);
             pName.Direction = ParameterDirection.InputOutput;
             pName.Value = Name;
 
@@ -1275,7 +1275,7 @@ namespace bigWebApps.bigWebDesk.Data
 
         public static void SetAccountNote(int DeptID, int AccountId, string Note)
         {
-            SqlParameter _pNote = new SqlParameter("@txtNote", SqlDbType.Text);
+            SqlParameter _pNote = new SqlParameter("@txtNote", SqlDbType.NText);
             if (Note.Length > 0) _pNote.Value = Note;
             else _pNote.Value = DBNull.Value;
             UpdateData("sp_UpdateAcctNote", new SqlParameter[] { new SqlParameter("@DId", DeptID), new SqlParameter("@AcctId", AccountId), _pNote });
@@ -1349,11 +1349,11 @@ namespace bigWebApps.bigWebDesk.Data
             if (dtNextDate > DateTime.MinValue) _params[8].Value = dtNextDate;
             else _params[8].Value = DBNull.Value;
 
-            _params[9] = new SqlParameter("@QBAccountAlias", SqlDbType.VarChar);
+            _params[9] = new SqlParameter("@QBAccountAlias", SqlDbType.NVarChar);
             if (String.IsNullOrEmpty(sQBAccount)) _params[9].Value = DBNull.Value;
             else _params[9].Value = sQBAccount;
 
-            _params[10] = new SqlParameter("@QBItemAlias", SqlDbType.VarChar);
+            _params[10] = new SqlParameter("@QBItemAlias", SqlDbType.NVarChar);
             if (String.IsNullOrEmpty(sQBItem)) _params[10].Value = DBNull.Value;
             else _params[10].Value = sQBItem;
             UpdateData("sp_UpdateAccountRate", _params);
@@ -1401,11 +1401,11 @@ namespace bigWebApps.bigWebDesk.Data
             if (dtNextDate > DateTime.MinValue) _params[7].Value = dtNextDate;
             else _params[7].Value = DBNull.Value;
 
-            _params[8] = new SqlParameter("@QBAccountAlias", SqlDbType.VarChar);
+            _params[8] = new SqlParameter("@QBAccountAlias", SqlDbType.NVarChar);
             if (String.IsNullOrEmpty(sQBAccount)) _params[8].Value = DBNull.Value;
             else _params[8].Value = sQBAccount;
 
-            _params[9] = new SqlParameter("@QBItemAlias", SqlDbType.VarChar);
+            _params[9] = new SqlParameter("@QBItemAlias", SqlDbType.NVarChar);
             if (String.IsNullOrEmpty(sQBItem)) _params[9].Value = DBNull.Value;
             else _params[9].Value = sQBItem;
             UpdateData("sp_InsertAccountRate", _params);
