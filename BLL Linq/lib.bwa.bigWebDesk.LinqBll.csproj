@@ -61,9 +61,9 @@
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Micajah.Common3, Version=3.0.4800.29086, Culture=neutral, PublicKeyToken=045979187a9f4eec, processorArchitecture=MSIL">
+    <Reference Include="Micajah.Common3, Version=3.0.4855.33023, Culture=neutral, PublicKeyToken=045979187a9f4eec, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\bin Shared\Micajah.Common3.dll</HintPath>
+      <HintPath>..\bin\Micajah.Common3.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.configuration" />

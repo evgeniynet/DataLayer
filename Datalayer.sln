@@ -7,6 +7,15 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "lib.bwa.bigWebDesk.LinqBll"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "lib.bwa.bigWebDesk.dal", "DAL\lib.bwa.bigWebDesk.dal.csproj", "{45543C60-3931-4EAF-9CFD-2420F5709EC0}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "bin", "bin", "{161327D8-B821-4B12-864A-B6476048C9CC}"
+	ProjectSection(SolutionItems) = preProject
+		bin\Micajah.Common3.dll = bin\Micajah.Common3.dll
+		bin\Microsoft.Practices.EnterpriseLibrary.Common.dll = bin\Microsoft.Practices.EnterpriseLibrary.Common.dll
+		bin\Microsoft.Practices.EnterpriseLibrary.Data.dll = bin\Microsoft.Practices.EnterpriseLibrary.Data.dll
+		bin\Microsoft.Practices.ObjectBuilder.dll = bin\Microsoft.Practices.ObjectBuilder.dll
+		bin\NCI.EasyObjects.dll = bin\NCI.EasyObjects.dll
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		bigWebDesk Debug|Any CPU = bigWebDesk Debug|Any CPU
