@@ -1022,7 +1022,12 @@ namespace bigWebApps.bigWebDesk.Data
             UpdateData("sp_UpdateProjectUser", _params);
         }
 
-        public static DataTable SelectDayTimeProjectNotes(int companyID, int accountID, int projectID, DateTime date, int userID)
+        public static DataTable SelectDayTimeProjectNotes( int companyID, int accountID, int projectID, DateTime date, int userID)
+        {
+           return SelectDayTimeProjectNotes(Guid.Empty, companyID, accountID, projectID, date, userID);
+        }
+
+        public static DataTable SelectDayTimeProjectNotes(Guid orgId, int companyID, int accountID, int projectID, DateTime date, int userID)
         {
             return SelectRecords("sp_SelectDayTimeProjectNotes", new SqlParameter[]
                    {
@@ -1031,7 +1036,7 @@ namespace bigWebApps.bigWebDesk.Data
                     new SqlParameter("@ProjectID", projectID),
                     new SqlParameter("@Date", date),
                     new SqlParameter("@UserId", userID)
-                   });
+                   },orgId);
         }        
         
         
